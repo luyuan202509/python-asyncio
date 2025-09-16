@@ -9,8 +9,7 @@ hello_thread.start()
 
 totle_threads   = threading.active_count()
 thread_name     = threading.current_thread().name
-
 print(f'Python is currently running : {totle_threads}')
-print(f'Current thread name: {thread_name}')
 
+print(f'Current thread name: {thread_name}')
 hello_thread.join()
