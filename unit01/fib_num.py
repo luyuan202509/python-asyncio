@@ -1,6 +1,8 @@
 """生成斐波那契数列并计算时间 """
 
 import time
+import threading 
+
 def fibonacci_recursive(n):
     if n <= 0:
         return 0
@@ -9,10 +11,20 @@ def fibonacci_recursive(n):
     else:
         return fibonacci_recursive(n-1) + fibonacci_recursive(n-2)
 
-start = time.time()
-# 计算前10个数
-for i in range(40):
-    print(fibonacci_recursive(i), end=" ")
-# 输出: 0 1 1 2 3 5 8 13 21 34
 
-print("\nTime taken:", time.time() - start)
+def fibs_with_threads():
+    fortieth_thread = threading.Thread(target=fibonacci_recursive, args=(40,))
+    forty_first_thread = threading.Thread(target=fibonacci_recursive, args=(41,))
+
+    fortieth_thread.start()
+    forty_first_thread.start()
+
+    fortieth_thread.join()
+    forty_first_thread.join()
+    
+
+if __name__ == '__main__':
+    start_threads = time.time()
+    fibs_with_threads()
+    print(f'Time taken: {time.time() - start_threads}')
+   
