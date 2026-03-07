@@ -17,6 +17,15 @@ class FrenchDeck:
 def main():
     beer_card = Card('7','diamonds')
     print(beer_card)
+    deck = FrenchDeck()
+    print(len(deck))
+    print("=======")
+    print(deck[:3])
+    print("=======")
+
+    for card in reversed(deck):
+        print(card)
+
 
 
     return 
